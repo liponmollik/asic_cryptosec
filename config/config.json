@@ -1,0 +1,61 @@
+{
+  "project_info": {
+    "name": "ASIC_Firmware_Common",
+    "version": "1.0.0",
+    "author": "Your Name/Team",
+    "description": "Common configuration settings for all ASIC firmware projects."
+  },
+  "clock_settings": {
+    "system_clock_hz": 120000000, // Default system clock frequency in Hz (e.g., 120 MHz)
+    "oscillator_type": "HSE",     // High-Speed External, HSI (Internal), PLL, etc.
+    "pll_multiplier": 5,          // PLL multiplication factor (e.g., for 24MHz crystal -> 120MHz)
+    "pll_divider": 2              // PLL pre-divider or post-divider
+  },
+  "memory_map_defaults": {
+    "flash_start_address": "0x08000000", // Default start address for Flash memory
+    "flash_size_bytes": 1048576,         // Default Flash size in bytes (e.g., 1MB)
+    "ram_start_address": "0x20000000",   // Default start address for RAM
+    "ram_size_bytes": 131072,            // Default RAM size in bytes (e.g., 128KB)
+    "linker_script_template": "linker_default.ld" // Default linker script template name
+  },
+  "debug_settings": {
+    "default_log_level": "INFO",        // Default logging verbosity (DEBUG, INFO, WARN, ERROR, FATAL)
+    "uart_debug_baud_rate": 115200,     // Default baud rate for debug UART
+    "jtag_swd_enabled": true,           // Whether JTAG/SWD debug interface is enabled by default
+    "halt_on_startup": false            // Halt CPU on startup for debugger attachment
+  },
+  "power_management_defaults": {
+    "default_sleep_mode": "DEEP_SLEEP", // Default low-power mode (e.g., NONE, SLEEP, DEEP_SLEEP)
+    "wakeup_sources": [                 // Common wakeup sources (e.g., GPIO, Timer)
+      "GPIO_WKUP",
+      "TIMER_WKUP"
+    ]
+  },
+  "build_config_defaults": {
+    "optimization_level": "-Os",        // Default compiler optimization (e.g., -Os for size, -O3 for speed)
+    "c_standard": "C11",                // Default C standard
+    "toolchain_prefix": "arm-none-eabi-", // Common toolchain prefix for cross-compilation
+    "common_cflags": [
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-fno-common",
+      "-ffunction-sections",
+      "-fdata-sections"
+    ],
+    "common_ldflags": [
+      "--gc-sections",
+      "-nostdlib"
+    ]
+  },
+  "peripheral_defaults": {
+    "gpio_pull_up_down_default": "NONE", // Default pull-up/down for GPIOs
+    "uart_flow_control_default": "NONE", // Default flow control for UART
+    "spi_mode_default": "MODE0",         // Default SPI mode (0, 1, 2, 3)
+    "i2c_speed_default_khz": 100         // Default I2C speed in kHz
+  },
+  "version_control": {
+    "git_branch_convention": "main",      // Expected main branch name
+    "tag_prefix": "v"                     // Prefix for release tags
+  }
+}
